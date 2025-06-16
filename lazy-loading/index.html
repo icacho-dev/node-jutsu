@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+    <style>
+      :root {
+        --background-color: #f4f4f4;
+        --section-bg-color: #fff;
+        --section-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        --section-padding: 20px;
+        --section-border-radius: 8px;
+        --gap-size: 12px;
+        --max-section-width: 600px;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: var(--background-color);
+      }
+
+      #app {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--gap-size);
+      }
+
+      section {
+        padding: var(--section-padding);
+        border-radius: var(--section-border-radius);
+        box-shadow: var(--section-shadow);
+        max-width: var(--max-section-width);
+        width: 100%;
+        background-color: var(--section-bg-color);
+      }
+
+      section > div {
+        display: flex;
+        justify-content: space-between;
+        padding: var(--section-padding);
+      }
+    </style>
+  </head>
+  <body>
+    <script type="module">
+      // Import the module once
+      let modulePromise = import("./src/main.ts");
+
+      // when scbtn1 is clicked, call the handler function inside lazy-loading/src/main.ts with {"foo": 123 }
+      document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("btn1").addEventListener("click", () => {
+          modulePromise.then((module) => {
+            module.handler({ foo: 123 });
+          });
+        });
+        // when scbtn2 is clicked, call the handler function inside lazy-loading/src/main.ts with {"greet": "hello" }
+        document.getElementById("btn2").addEventListener("click", () => {
+          modulePromise.then((module) => {
+            module.handler({ action: "greet" });
+          });
+        });
+      });
+    </script>
+    <div id="app">
+      <img src="/vite.svg" alt="Vite logo" width="100" height="100" />
+      <h1>Lazy Loading Example</h1>
+      <section>
+        <p>Click the buttons below to trigger events.</p>
+        <div>
+          <button id="btn1">Send Default Event</button>
+          <button id="btn2">Send Greet Event</button>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
