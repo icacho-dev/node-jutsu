@@ -63,6 +63,11 @@ h1 {
   color: #888;
 }
 
+.main-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
