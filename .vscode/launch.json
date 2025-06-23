@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run typescript-decorator:dev",
+      "runtimeExecutable": "yarn",
+      "cwd": "${workspaceFolder}/typescript-decorator",
+      "runtimeArgs": ["dev"],
+      "console": "integratedTerminal",
+      "sourceMaps": true,
+      "env": {
+        "__VITE_SERVER_PORT": "5100"
+      }
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome against localhost",
+      "url": "http://localhost:5100",
+      "webRoot": "${workspaceFolder}/typescript-decorator",
+      "port": 9222 // Explicitly specify the debugging port
+    }
+  ]
+}

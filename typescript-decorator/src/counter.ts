@@ -3,7 +3,6 @@
  *
  * This decorator can be applied to any method to log when the method starts and finishes execution.
  */
-
 import { Logger } from "./decorators/logger.decorator";
 
 export class Counter {
